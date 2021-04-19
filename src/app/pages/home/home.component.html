@@ -61,48 +61,6 @@
   </div>
 
 
-  <div id="myGrid" class="ag-theme-alpine" >
-    <ag-grid-angular #agGrid
-    style="width: 100%; height: 200px;"
-    class="ag-theme-alpine-dark"
-    [rowData]="rowData"
-    [defaultColDef]="defaultColDef"
-    [columnDefs]="columnDefs"
-    [enableRangeSelection]="true"
-     >
-  </ag-grid-angular>
-</div>
 
 
-<table mat-table [dataSource]="Usuarios" class="mat-elevation-z8">
 
-  <!--- Note that these columns can be defined in any order.
-        The actual rendered columns are set as a property on the row definition" -->
-
-  <!-- Position Column -->
-  <ng-container matColumnDef="position">
-    <th mat-header-cell *matHeaderCellDef> Nombre </th>
-    <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
-  </ng-container>
-
-  <!-- Name Column -->
-  <ng-container matColumnDef="name">
-    <th mat-header-cell *matHeaderCellDef> Email </th>
-    <td mat-cell *matCellDef="let element"> {{element.apellido}} </td>
-  </ng-container>
-
-  <!-- Weight Column -->
-  <ng-container matColumnDef="weight">
-    <th mat-header-cell *matHeaderCellDef> Edad </th>
-    <td mat-cell *matCellDef="let element"> {{element.email}} </td>
-  </ng-container>
-
-  <!-- Symbol Column -->
-  <ng-container matColumnDef="symbol">
-    <th mat-header-cell *matHeaderCellDef> Roles </th>
-    <td mat-cell *matCellDef="let element"> {{element.edad}} </td>
-  </ng-container>
-
-  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-</table>
