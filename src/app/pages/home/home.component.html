@@ -1,0 +1,108 @@
+
+
+<div class="row">
+    <div class=" col-sm" > 
+      <div class="mx-3"> 
+        <p class="font-weight-bold" > Listado de Tareas </p> 
+        <p class="font-weight-bold">Usuario: {{ usuarioName }}</p>  
+      </div>
+    </div>
+    <div class=" col-sm " > 
+      <div class="d-flex flex-row-reverse my-4">
+        <button class="btn btn-outline-danger mx-1" >
+          LogOut
+        </button>
+        
+      </div>
+    </div>
+  </div> 
+  
+  <div class="row">
+  
+    <div class="col mx-3">
+      <h3 class="my-3 ml-3" >Tareas Programadas</h3>
+    </div>
+    <div class="mx-3 px-3 col">
+      <button class="btn btn-outline-success mx-3"
+        (click)="nuevaTarea()">
+        Tarea Nueva
+      </button>
+    </div>
+  
+  </div>
+  
+  <div class="row mx-3">
+    <table class="table table-striped mx-2 ag-theme-alpine">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Nombres</th>
+          <th scope="col">Email</th>
+          <th scope="col">Fecha </th>
+          <th scope="col">Fecha Final</th>
+          <th scope="col">Opciones</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of Usuarios ; index as i ">
+          <th scope="row">{{i + 1}}</th>
+          <td>{{ user.nombre  }}  {{ user.apellido }}</td>
+          <td>
+            {{ user.email  }}
+          </td>
+          <td> roles</td>
+          <td>App</td>
+          <td>
+            <button  class="btn btn-warning mx-1"> Edit </button>    
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+
+  <div id="myGrid" class="ag-theme-alpine" >
+    <ag-grid-angular #agGrid
+    style="width: 100%; height: 200px;"
+    class="ag-theme-alpine-dark"
+    [rowData]="rowData"
+    [defaultColDef]="defaultColDef"
+    [columnDefs]="columnDefs"
+    [enableRangeSelection]="true"
+     >
+  </ag-grid-angular>
+</div>
+
+
+<table mat-table [dataSource]="Usuarios" class="mat-elevation-z8">
+
+  <!--- Note that these columns can be defined in any order.
+        The actual rendered columns are set as a property on the row definition" -->
+
+  <!-- Position Column -->
+  <ng-container matColumnDef="position">
+    <th mat-header-cell *matHeaderCellDef> Nombre </th>
+    <td mat-cell *matCellDef="let element"> {{element.nombre}} </td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef> Email </th>
+    <td mat-cell *matCellDef="let element"> {{element.apellido}} </td>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="weight">
+    <th mat-header-cell *matHeaderCellDef> Edad </th>
+    <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="symbol">
+    <th mat-header-cell *matHeaderCellDef> Roles </th>
+    <td mat-cell *matCellDef="let element"> {{element.edad}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
